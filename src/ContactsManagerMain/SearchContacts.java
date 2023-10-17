@@ -26,7 +26,7 @@ public class SearchContacts {
         System.out.println("Please enter a name: ");
         String userInputName = scanner.nextLine();
         if (userInputName.matches(regex)) {
-            System.out.println("You entered: " + userInputName);
+            System.out.println("You entered: " + userInputName.equals(userInputName));
 
         } else {
             System.out.println("Please enter a valid name.");
