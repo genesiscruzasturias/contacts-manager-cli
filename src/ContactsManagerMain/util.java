@@ -2,19 +2,17 @@ package ContactsManagerMain;
 
 
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.Files;
+import java.nio.file.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.nio.file.Files;
 import java.util.Arrays;
 
+
 import static ContactsManagerMain.DeleteContacts.deleteContactByName;
 import static ContactsManagerMain.DeleteContacts.deleteContactByName;
-import static ContactsManagerMain.SearchContacts.searchContactByName;
-import static ContactsManagerMain.SearchContacts.searchContactByPhoneNumber;
+import static ContactsManagerMain.SearchContacts.*;
 
 public class util {
 
@@ -43,22 +41,27 @@ public class util {
 
         selection = input.nextInt();
 
-        if(selection == 1){
-            System.out.println("Displaying all contacts: ");
-            System.out.println(" ");
-            displayContacts();
-        } else if (selection ==2){
-            addContact();
-        } else if (selection == 3){
-            searchContactByName();
-            System.out.println(contactList);
-        } else if (selection == 4){
-            deleteContactByName();
-        } else {
-            System.out.println("Goodbye!");
+            if(selection == 1){
+                System.out.println("Displaying all contacts: ");
+                System.out.println(" ");
+                displayContacts();
+                menu();
+            } else if (selection ==2){
+                addContact();
+                menu();
+            } else if (selection == 3){
+                searchContactByName();
+                System.out.println(contactList);
+                menu();
+            } else if (selection == 4){
+                deleteContactByName();
+                menu();
+            } else {
+                System.out.println("Goodbye!");
+                return selection;
+            }
             return selection;
-        }
-        return selection;
+
 
     }
 
@@ -77,8 +80,17 @@ public class util {
         }
     }
 
-    public static void addContact () {
-        System.out.println("");
+    public static void addContact () throws IOException {
+        System.out.println("Enter Your contacts name.");
+        String newName = scanner.nextLine();
+        System.out.println("Enter your contact's Number.");
+        int newNumber = scanner.nextInt();
+
+        Files.write(
+                Paths.get("src/data", "/contacts.txt"),List.of(newName + " | " + newNumber),StandardOpenOption.APPEND
+        );
+
+        System.out.println("Your contact has been added!");
     }
 
 }
