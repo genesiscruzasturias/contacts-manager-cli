@@ -74,25 +74,16 @@ public class util {
         for (String oneLine : contactList) {
             //When using bar character \\ is needed to escape its normal function
             String[] data = new String[]{oneLine};
+
             for (String s : data) {
-                System.out.println(s);
+//                System.out.println(s);
+                data = oneLine.split(" : ");
+                System.out.println(s.replaceFirst("(\\d{3})(\\d{3})(\\d+)", "($1) $2-$3"));
+
             }
         }
     }
 
-//    public static void addContact () throws IOException {
-//        System.out.println("Enter Your contacts name.");
-//        String newName = scanner.nextLine();
-//
-//        System.out.println("Enter your contact's Number.");
-//        int newNumber = scanner.nextInt();
-//
-//        Files.write(
-//                Paths.get("src/data", "/contacts.txt"),List.of(newName + " | " + newNumber),StandardOpenOption.APPEND
-//        );
-//
-//        System.out.println("Your contact has been added!");
-//    }
     public static void addContact () throws IOException {
         System.out.println("Enter Your contacts name.");
         String newName = scanner.nextLine();
