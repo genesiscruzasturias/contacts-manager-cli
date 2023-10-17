@@ -4,6 +4,7 @@ package ContactsManagerMain;
 import java.io.IOException;
 import java.nio.file.*;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 import java.nio.file.Files;
 
@@ -26,27 +27,25 @@ public class util {
 
         selection = input.nextInt();
 
-            if(selection == 1){
-                System.out.println("Displaying all contacts: ");
-                System.out.println(" ");
-                displayContacts();
-                menu();
-            } else if (selection ==2){
-                addContact();
-                menu();
-            } else if (selection == 3){
-                searchContactByName();
-                menu();
-            } else if (selection == 4){
-                deleteContactByName();
-                menu();
-            } else {
-                System.out.println("Goodbye!");
-                return selection;
-            }
+        if(selection == 1){
+            System.out.println("Displaying all contacts: ");
+            System.out.println(" ");
+            displayContacts();
+            menu();
+        } else if (selection ==2){
+            addContact();
+            menu();
+        } else if (selection == 3){
+            searchContactByName();
+            menu();
+        } else if (selection == 4){
+            deleteContactByName();
+            menu();
+        } else {
+            System.out.println("Goodbye!");
             return selection;
-
-
+        }
+        return selection;
     }
 
 
@@ -56,16 +55,14 @@ public class util {
         List<String> contactList = Files.readAllLines(contactsPath);
         for (String oneLine : contactList) {
             String[] data = new String[]{oneLine};
-
             for (String s : data) {
-//                System.out.println(s);
-                data = oneLine.split(" : ");
                 System.out.println(s.replaceFirst("(\\d{3})(\\d{3})(\\d+)", "($1) $2-$3"));
-
             }
         }
     }
 
+
+    // Method to add an contact
     public static void addContact () throws IOException {
         System.out.println("Enter Your contacts name.");
         String newName = scanner.nextLine();
@@ -120,7 +117,8 @@ public class util {
         String userInputName = scanner.nextLine();
         List<String> lineCheck = Files.readAllLines(Paths.get("src/data", "/contacts.txt"));
         for (String Line: lineCheck){
-            if (Line.contains(userInputName)) {
+//           String lineTwo = lineCheck.get();ine.toLowerCase();
+            if (Line.toLowerCase().contains(userInputName)) {
                 System.out.println(Line);
             }
         }
@@ -128,5 +126,3 @@ public class util {
     }
 
 }
-
-
