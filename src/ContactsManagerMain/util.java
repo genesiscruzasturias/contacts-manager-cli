@@ -26,7 +26,7 @@ public class util {
 
     }
 
-    private static int menu() throws IOException {
+    public static int menu() throws IOException {
 
         Path contactPath = Paths.get("src/data", "/contacts.txt");
         List<String> contactList = Files.readAllLines(contactPath);
