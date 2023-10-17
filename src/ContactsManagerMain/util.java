@@ -80,9 +80,23 @@ public class util {
         }
     }
 
+//    public static void addContact () throws IOException {
+//        System.out.println("Enter Your contacts name.");
+//        String newName = scanner.nextLine();
+//
+//        System.out.println("Enter your contact's Number.");
+//        int newNumber = scanner.nextInt();
+//
+//        Files.write(
+//                Paths.get("src/data", "/contacts.txt"),List.of(newName + " | " + newNumber),StandardOpenOption.APPEND
+//        );
+//
+//        System.out.println("Your contact has been added!");
+//    }
     public static void addContact () throws IOException {
         System.out.println("Enter Your contacts name.");
         String newName = scanner.nextLine();
+
         System.out.println("Enter your contact's Number.");
         int newNumber = scanner.nextInt();
 
