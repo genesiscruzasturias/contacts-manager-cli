@@ -56,13 +56,16 @@ public class util {
         List<String> contactList = Files.readAllLines(contactsPath);
         for (String oneLine : contactList) {
             String[] data = new String[]{oneLine};
+
             for (String s : data) {
-                System.out.println(s);
+//                System.out.println(s);
+                data = oneLine.split(" : ");
+                System.out.println(s.replaceFirst("(\\d{3})(\\d{3})(\\d+)", "($1) $2-$3"));
+
             }
         }
     }
 
-    // Method to add an contact
     public static void addContact () throws IOException {
         System.out.println("Enter Your contacts name.");
         String newName = scanner.nextLine();
